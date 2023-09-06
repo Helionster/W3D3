@@ -113,7 +113,7 @@ def merge_sort(array)
     return [] if array.length == 0
     return array if array.length == 1
 
-    mid = (array.length / 2) - 1
+    mid = array.length / 2
 
     first_half = merge_sort(array[0...mid])
     second_half = merge_sort(array[mid..-1])
@@ -122,17 +122,49 @@ def merge_sort(array)
 end
 
 def merge(first_array,second_array)
+    merged = []
+    
+    # if first_array.length > second_array.length
+    #     max = first_array.length
+    # else
+    #     max = second_array.length
+    # end
 
-    sorted = []
+    # (0...max).each do |i|
+    #     if first_array[i] == nil
+    #         merged << second_array[i]
+    #     else
+    #         merged << first_array[i]
+    #     end
+    # end
+
+    # sorted = []
 
     i = 0
-
-    while i < first_array.length 
-        j = 0 
-        while j < second_array.length
-            
+    j = 0
+    while i < first_array.length && j < second_array.length 
+        if first_array[i] > second_array[j]
+            merged << second_array[j]
+            j += 1
+        else
+            merged << first_array[i]
+            i += 1
         end
     end
+
+    if i == first_array.length
+        while j < second_array.length
+            merged << second_array[j]
+            j += 1
+        end
+    else
+        while i < first_array.length
+            merged << first_array[i]
+            i += 1
+        end
+    end
+
+    merged
 end
 
 p merge_sort([2,1,5,9,7,3])
