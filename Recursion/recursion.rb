@@ -53,15 +53,15 @@ class Array
     end
 end
 
-robot_parts = [
-  ["nuts", "bolts", "washers"],
-  ["capacitors", "resistors", "inductors"]
-]
+# robot_parts = [
+#   ["nuts", "bolts", "washers"],
+#   ["capacitors", "resistors", "inductors"]
+# ]
 
-robot_parts_copy = robot_parts.deep_dup
+# robot_parts_copy = robot_parts.deep_dup
 
-robot_parts_copy[1] << "LEDs"
-p robot_parts[1]
+# robot_parts_copy[1] << "LEDs"
+# p robot_parts[1]
 
 def fibonacci_iter(n)
     return 0 if n == 1
@@ -75,4 +75,33 @@ def fibonacci_iter(n)
     array[-1]
 end
 
-p fibonacci_iter(5)
+# p fibonacci_iter(5) 
+
+def fibonacci_recur(n)
+    return 0 if n == 1
+    return 1 if n == 2
+
+    fibonacci_recur(n - 1) + fibonacci_recur(n - 2)
+end
+
+def bsearch(array,target,mid_index = 0)
+    mid = array.length / 2
+
+    if array[mid] == target
+        return mid + mid_index
+    elsif target < array[mid]
+        return bsearch(array[0...mid],target)
+    else
+        return bsearch(array[mid + 1..-1],target,mid)
+    end
+
+    nil
+end 
+
+p bsearch([1, 2, 3], 1) # => 0
+p bsearch([2, 3, 4, 5], 3) # => 1
+p bsearch([2, 4, 6, 8, 10], 6) # => 2
+p bsearch([1, 3, 4, 5, 9], 5) # => 3
+p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
+p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
+p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
