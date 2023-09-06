@@ -38,9 +38,41 @@ end
 
 class Array
     def deep_dup
-
+        # return dupe_arr if dupe_arr.length == self.length
+        return self if self.length == 1
         dupe_arr = []
 
-        self.each do |
+        self.each do |ele|
+            if ele.is_a?(Array)
+                dupe_arr += ele.deep_dup
+            else
+                dupe_arr << ele
+            end
+        end
+        dupe_arr
     end
 end
+
+robot_parts = [
+  ["nuts", "bolts", "washers"],
+  ["capacitors", "resistors", "inductors"]
+]
+
+robot_parts_copy = robot_parts.deep_dup
+
+robot_parts_copy[1] << "LEDs"
+p robot_parts[1]
+
+def fibonacci_iter(n)
+    return 0 if n == 1
+    return 1 if n == 2
+    array = [0, 1]
+    i = 3
+    while i <= n
+        array << array[-1] + array[-2]
+        i += 1
+    end
+    array[-1]
+end
+
+p fibonacci_iter(5)
