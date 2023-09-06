@@ -1,3 +1,4 @@
+require 'byebug'
 def range_iter(start, finish)
     arr = []
     
@@ -84,18 +85,20 @@ def fibonacci_recur(n)
     fibonacci_recur(n - 1) + fibonacci_recur(n - 2)
 end
 
-def bsearch(array,target,mid_index = 0)
+def bsearch(array,target)
+    return nil if array.first != target && array.length == 1
+   
     mid = array.length / 2
 
     if array[mid] == target
-        return mid + mid_index
+        return mid
     elsif target < array[mid]
         return bsearch(array[0...mid],target)
+    elsif bsearch(array[mid + 1..-1],target) == nil
+        return nil
     else
-        return bsearch(array[mid + 1..-1],target,mid)
+        return mid + bsearch(array[mid + 1..-1],target) + 1
     end
-
-    nil
 end 
 
 p bsearch([1, 2, 3], 1) # => 0
