@@ -26,11 +26,21 @@ def second_exponent(b, n)
     return b if n == 1
 
     if n.even?
-               
+        second_exponent(b, n / 2) * second_exponent(b, n / 2)
     else
-        
+        (b * (second_exponent(b, (n - 1) / 2))) * (b * (second_exponent(b, (n - 1) / 2)))
     end
 end
 
 
-p first_exponent(3, 2)
+# p first_exponent(3, 2)
+# p second_exponent(2,2)
+
+class Array
+    def deep_dup
+
+        dupe_arr = []
+
+        self.each do |
+    end
+end
