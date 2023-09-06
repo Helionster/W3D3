@@ -167,4 +167,22 @@ def merge(first_array,second_array)
     merged
 end
 
-p merge_sort([2,1,5,9,7,3])
+# p merge_sort([2,1,5,9,7,3])
+
+def subsets(array)
+
+    return [] if array.length == 0
+
+    new_array = []
+    prev_array = subsets(array[0...array.length - 1])
+
+    prev_array.each {|ele| new_array << ele}
+
+    new_array << array
+end
+
+p subsets([]) # => [[]]
+p subsets([1]) # => [[], [1]]
+p subsets([1, 2]) # => [[], [1], [2], [1, 2]]
+p subsets([1, 2, 3])
+# => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
