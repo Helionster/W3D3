@@ -15,10 +15,22 @@ end
 
 # p range_rec(1, 5)
 
-def first_exponenet(b, n)
+def first_exponent(b, n)
     return 1 if n == 0
 
-    b * first_exponenet(b, n - 1)
+    b * first_exponent(b, n - 1)
 end
 
-p first_exponenet(3, 2)
+def second_exponent(b, n)
+    return 1 if n == 0
+    return b if n == 1
+
+    if n.even?
+               
+    else
+        
+    end
+end
+
+
+p first_exponent(3, 2)
